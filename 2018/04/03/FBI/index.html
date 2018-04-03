@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="学习数论的小笔记(一) 素数判断对于素数如何判断，只需要枚举小于他的数，看看能不能被其他数整除，当然不用枚举所有的数，只需要到sqrt（n）就可以啦12345int s = sqrt(n) ; //(from &apos;cmath&apos;)for (int i = 2; i &amp;lt;= s; i++ ) &amp;#123;	//n == 2 时特判一下	if (n % i == 0) return false ;&amp;#">
-<meta name="keywords" content="数论">
+  <meta name="description" content="P1087 Problem我们可以把由“0”和“1”组成的字符串分为三类：全“0”串称为B串，全“1”串称为I串，既含“0”又含“1”的串则称为F串。FBI树是一种二叉树，它的结点类型也包括F结点，B结点和I结点三种。由一个长度为2^N的“01”串S可以构造出一棵FBI树T，递归的构造方法如下：1) T的根结点为R，其类型与串S的类型相同；2) 若串S的长度大于1，将串S从中间分开，分为等长的左右">
+<meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数论学习笔记">
-<meta property="og:url" content="https://lambsey.oi/2018/03/25/关于素数/index.html">
+<meta property="og:title" content="FBI Tree">
+<meta property="og:url" content="https://lambsey.oi/2018/04/03/FBI/index.html">
 <meta property="og:site_name" content="Lambsey&#39;s Blog">
-<meta property="og:description" content="学习数论的小笔记(一) 素数判断对于素数如何判断，只需要枚举小于他的数，看看能不能被其他数整除，当然不用枚举所有的数，只需要到sqrt（n）就可以啦12345int s = sqrt(n) ; //(from &apos;cmath&apos;)for (int i = 2; i &amp;lt;= s; i++ ) &amp;#123;	//n == 2 时特判一下	if (n % i == 0) return false ;&amp;#">
+<meta property="og:description" content="P1087 Problem我们可以把由“0”和“1”组成的字符串分为三类：全“0”串称为B串，全“1”串称为I串，既含“0”又含“1”的串则称为F串。FBI树是一种二叉树，它的结点类型也包括F结点，B结点和I结点三种。由一个长度为2^N的“01”串S可以构造出一棵FBI树T，递归的构造方法如下：1) T的根结点为R，其类型与串S的类型相同；2) 若串S的长度大于1，将串S从中间分开，分为等长的左右">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-31T16:17:29.174Z">
+<meta property="og:updated_time" content="2018-04-03T15:00:27.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数论学习笔记">
-<meta name="twitter:description" content="学习数论的小笔记(一) 素数判断对于素数如何判断，只需要枚举小于他的数，看看能不能被其他数整除，当然不用枚举所有的数，只需要到sqrt（n）就可以啦12345int s = sqrt(n) ; //(from &apos;cmath&apos;)for (int i = 2; i &amp;lt;= s; i++ ) &amp;#123;	//n == 2 时特判一下	if (n % i == 0) return false ;&amp;#">
+<meta name="twitter:title" content="FBI Tree">
+<meta name="twitter:description" content="P1087 Problem我们可以把由“0”和“1”组成的字符串分为三类：全“0”串称为B串，全“1”串称为I串，既含“0”又含“1”的串则称为F串。FBI树是一种二叉树，它的结点类型也包括F结点，B结点和I结点三种。由一个长度为2^N的“01”串S可以构造出一棵FBI树T，递归的构造方法如下：1) T的根结点为R，其类型与串S的类型相同；2) 若串S的长度大于1，将串S从中间分开，分为等长的左右">
 
 
 
 
 
 
-  <link rel="canonical" href="https://lambsey.oi/2018/03/25/关于素数/"/>
+  <link rel="canonical" href="https://lambsey.oi/2018/04/03/FBI/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>数论学习笔记 | Lambsey's Blog</title>
+  <title>FBI Tree | Lambsey's Blog</title>
   
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/03/25/关于素数/">
+    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/03/FBI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lambsey">
@@ -320,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数论学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">FBI Tree</h1>
         
 
         <div class="post-meta">
@@ -332,7 +332,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T23:01:34+08:00">2018-03-25</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T22:46:49+08:00">2018-04-03</time>
             
 
             
@@ -353,7 +353,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数论/" itemprop="url" rel="index"><span itemprop="name">数论</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
 
                 
                 
@@ -387,17 +387,11 @@
       
 
       
-        <p>学习数论的小笔记(一)</p>
-<h1 id="素数判断"><a href="#素数判断" class="headerlink" title="素数判断"></a>素数判断</h1><p>对于素数如何判断，只需要枚举小于他的数，看看能不能被其他数整除，当然不用枚举所有的数，只需要到sqrt（n）就可以啦<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s = <span class="built_in">sqrt</span>(n) ; <span class="comment">//(from 'cmath')</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= s; i++ ) &#123;</span><br><span class="line">	<span class="comment">//n == 2 时特判一下</span></span><br><span class="line">	<span class="keyword">if</span> (n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>P1087</p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>我们可以把由“0”和“1”组成的字符串分为三类：全“0”串称为B串，全“1”串称为I串，既含“0”又含“1”的串则称为F串。<br>FBI树是一种二叉树，它的结点类型也包括F结点，B结点和I结点三种。由一个长度为2^N的“01”串S可以构造出一棵FBI树T，递归的构造方法如下：<br>1) T的根结点为R，其类型与串S的类型相同；<br>2) 若串S的长度大于1，将串S从中间分开，分为等长的左右子串S1和S2；由左子串S1构造R的左子树T1，由右子串S2构造R的右子树T2。<br>现在给定一个长度为2^N的“01”串，请用上述构造方法构造出一棵FBI树，并输出它的后序遍历序列。<br>数据范围 $ n\geq10 $</p>
 <a id="more"></a>
-<h1 id="素数筛"><a href="#素数筛" class="headerlink" title="素数筛"></a>素数筛</h1><p>如果题目要求一组询问，询问某数是否为素数，这时如果再用之前的方法效率是不是就很低了，肯定会超时，所以还有很厉害的各种筛法。</p>
-<h2 id="Eratosthenes筛"><a href="#Eratosthenes筛" class="headerlink" title="Eratosthenes筛"></a>Eratosthenes筛</h2><p>对于每一个素数，很容易得出他的所有倍数都不会是素数，所以只要将素数的倍数都筛去，就能得到一个素数表了。<br>比如用一串01序列表示素数表， 1表示是素数， 0表示不是素数。<br>最初始时：1初始化为不是素数<br><code>0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</code><br>删去2的倍数<br><code>0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0</code><br>删去3的倍数<br><code>0 1 1 0 1 0 1 0 0 0 1 0 1 0 0 0 1 0</code><br>再多次操作就得到了素数表:2 3 5 7 11 13 17 19…<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">23333333</span> ;</span><br><span class="line"><span class="keyword">bool</span> isprime[ MAXN ] ; </span><br><span class="line"><span class="built_in">memset</span>(isprime, <span class="literal">true</span>, <span class="keyword">sizeof</span>(isprime) ) ;</span><br><span class="line">isprime[ <span class="number">0</span> ] = isprime[ <span class="number">1</span> ] = <span class="number">0</span> ;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> ; i &lt; MAXN ; i++ )</span><br><span class="line">	<span class="keyword">if</span> (isprime[i]) &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = i * <span class="number">2</span>; j &lt; MAXN; j += i )</span><br><span class="line">	isprime[ j ] = <span class="literal">false</span> ;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>时间复杂度O(n log n)<br>虽然现在看上去已经十高效了， 但还是有些慢。因为对于每一个非素数，都会被筛多次，比如 6 = 2 * 3， 在2时和3时被各筛了一次，因此会有时间上的浪费 。</p>
-<h2 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理 :"></a>原理 :</h3><p>首先， 任何一个合数都能表示为一个素数和一个合数的乘积 。假设N为一个合数， 并且N = x * y , x为合数，y是一个素数，那么有<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">N</span> = x * y <span class="comment">;</span></span><br><span class="line"><span class="attribute">x</span> = a * b <span class="comment">; // 假设a为素数b为合数</span></span><br><span class="line"><span class="attribute">N</span> = a * b * y <span class="comment">;</span></span><br><span class="line"><span class="attribute">N</span> = a * H <span class="comment">; // 假设 H = b * y</span></span><br></pre></td></tr></table></figure></p>
-<p>所以一个合数和一个素数的乘积可以表示为一个更大的合数和更小的素数的乘积，因此每个数只要处理一次就可了，这样就达到线性时间了。<br>再模拟一次<br>这里假设1表示<em>非素数</em>，0表示是素数，p表示素数表 。<br><code>1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code><br>p(empty)<br>还是先筛2的倍数，不过只筛一次，再把2放进素数表。<br><code>1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code><br>p(2)<br>再筛3的倍数<br><code>1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code><br>p(2 , 3 . . . )<br>这是发现4不是素数了。也筛一下<br><code>1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0</code><br>这样不停的筛啊筛，最终也会得到素数表，虽然看上去有点复杂但时间的确达到线性了。<br>附上代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> isnotp[ MAXN ] ;</span><br><span class="line"><span class="keyword">int</span> p[ <span class="number">23333</span> ] ; <span class="comment">// 素数表 </span></span><br><span class="line"><span class="keyword">int</span> cur = <span class="number">0</span> ; <span class="comment">// 统计素数个数</span></span><br><span class="line"><span class="built_in">memset</span>(isnotp, <span class="literal">false</span>, <span class="keyword">sizeof</span>(isnotp)) ;</span><br><span class="line">isnotp[<span class="number">1</span>] = <span class="literal">true</span> ;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= MAXN; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (! isnotp[ i ]) p[ ++cur ] = i ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cur &amp;&amp; i * p[j] &lt;= MAXN; j ++) &#123;</span><br><span class="line">		isnotp[ i * p[ j ] ] = <span class="literal">true</span> ; <span class="comment">//标记合数，此时可以保证p[j]为i * p[j]的最小素因子</span></span><br><span class="line">		<span class="keyword">if</span> (i % p[ j ] == <span class="number">0</span>) <span class="keyword">break</span> ;</span><br><span class="line">		<span class="comment">// 就是这行神奇的代码才达到线性的</span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>酱紫就能更快地得到素数表了。<br>什么？你说<br><code>if (i % p[ j ] == 0 ) break ;</code><br>怎么就能保证线性了捏？<br>根据欧拉筛的原理，每个合数都能被最小的素数因子筛去，又因为p[]数组所保存的素数表是单调递增的，因为i能整除p[j]，那么i <em> p[j + 1]这个合数肯定被p[j]乘上某个数筛掉。因为i含有质因子p[j]，p[j] &lt; p[j + 1],所以有<br>`i </em> p[j + 1] = m <em> p[j] </em> p[j + 1] ; `<br>这下就能愉快的打表了orz…..<br>啦啦啦啦啦啦 : 虽然线性筛理论上速度是其他筛法的3~4倍，但当数据量小时，由于取模运算会导致时间慢一些，不过还是很快了，可以灵活选择。(有了线性筛，谁还用那什么Ebalabala筛呢)。</p>
-<h2 id="Miller-Rabin算法"><a href="#Miller-Rabin算法" class="headerlink" title="Miller Rabin算法"></a>Miller Rabin算法</h2><p>博主很懒，于是拖更了。。。</p>
-
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>首先FBI树一定是一棵完全二叉树，由此联想到了线段树，在递归建树的过程中，在递归边界获得所有叶子节点的类型，回溯时通过左右子节点更新相应父节点。<br>题解里还有大犇不建树做的，可惜蒟蒻还是觉得老老实实建一棵树比较开心啊o(<em>￣▽￣</em>)ブ 。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = (<span class="number">1</span> &lt;&lt; <span class="number">10</span>) + <span class="number">50</span> ;</span><br><span class="line"><span class="keyword">int</span> M ;</span><br><span class="line"><span class="keyword">char</span> tree[MAXN*<span class="number">50</span>] ;</span><br><span class="line"><span class="keyword">char</span> s[MAXN] ;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (tree[n] == <span class="string">'\0'</span>) <span class="keyword">return</span> ;</span><br><span class="line">	print(n &lt;&lt; <span class="number">1</span>) ;</span><br><span class="line">	print(n &lt;&lt; <span class="number">1</span> | <span class="number">1</span>) ;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%c"</span>, tree[n]) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">built</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> l , <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">		<span class="keyword">if</span> (s[l - <span class="number">1</span>] == <span class="string">'1'</span>) tree[n] = <span class="string">'I'</span> ;</span><br><span class="line">		<span class="keyword">else</span> tree[n] = <span class="string">'B'</span> ;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">int</span> ls = n &lt;&lt; <span class="number">1</span>, rs = n &lt;&lt; <span class="number">1</span> | <span class="number">1</span> ;</span><br><span class="line">	built(ls , l, mid) ;</span><br><span class="line">	built(rs , mid + <span class="number">1</span>, r) ;</span><br><span class="line">	<span class="keyword">if</span> (tree[ls] == <span class="string">'I'</span> &amp;&amp; tree[rs] == <span class="string">'I'</span>)</span><br><span class="line">	tree[n] = <span class="string">'I'</span> ;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (tree[ls] == <span class="string">'B'</span> &amp;&amp; tree[rs] == <span class="string">'B'</span>) </span><br><span class="line">	tree[n] = <span class="string">'B'</span> ;</span><br><span class="line">	<span class="keyword">else</span> tree[n] = <span class="string">'F'</span> ;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N ;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d\n"</span>, &amp;N) ;</span><br><span class="line">	M = <span class="number">1</span> &lt;&lt; N ;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s) ;</span><br><span class="line">	built(<span class="number">1</span>, <span class="number">1</span>, M) ;</span><br><span class="line">	print(<span class="number">1</span>) ;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -417,7 +411,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数论/" rel="tag"># 数论</a>
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
           
         </div>
       
@@ -430,15 +424,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/02/Problem/" rel="next" title="A % B Problem">
+                <i class="fa fa-chevron-left"></i> A % B Problem
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/01/数论与哲学/" rel="prev" title="数论与哲学">
-                数论与哲学 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#素数判断"><span class="nav-number">1.</span> <span class="nav-text">素数判断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#素数筛"><span class="nav-number">2.</span> <span class="nav-text">素数筛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Eratosthenes筛"><span class="nav-number">2.1.</span> <span class="nav-text">Eratosthenes筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉筛法"><span class="nav-number">2.2.</span> <span class="nav-text">欧拉筛法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.2.1.</span> <span class="nav-text">原理 :</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Miller-Rabin算法"><span class="nav-number">2.3.</span> <span class="nav-text">Miller Rabin算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
@@ -792,6 +786,29 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
