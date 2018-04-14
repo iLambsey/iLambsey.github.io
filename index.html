@@ -299,6 +299,304 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/15/heap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lambsey">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facecode.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lambsey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/15/heap/" itemprop="url">堆</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T00:15:19+08:00">2018-04-15</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于我太弱，只会用priority_queue，所以现在要开始学习手写堆。</p>
+<h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><blockquote>
+<p>妹子想请你帮个忙，妹子有$n$次数学考试的成绩，她想从里面找出考的分数最少的$1$张试卷然后把它温柔的…，当然是整理啦，再放进一张刚考完的还热乎乎的试卷，妹子知道你乐于助人，所以请你帮帮她。</p>
+</blockquote>
+<p>先假装你不会排序好吗<br>你表示so easy，于是写了如下代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> minn = <span class="number">9999</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (score[i] &lt; minn) minn = score[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>于是你开心的去找妹子，妹子表示很不满意，因为她想找$k$张，又因为妹子有很多的试卷，你的程序找了好几天了还没有找完，所以她就去找学霸帮忙了。。<br>你感觉很不服，于是想出了新的办法。<br>先把所有的成绩为结点，建立一颗完全二叉树，每个节点都有这样的一个特点：权值比左右儿子都要小。我们把这样的完全二叉树叫做小根堆，相反的，权值比左右儿子都大的，就是大根堆。<br>现在需要考虑到问题就是如何把新加入的元素插入到堆中。<br>根据堆的性质，我们可以对左儿子和右儿子进行比较，如果不满足的堆的性质，可以将这个元素与较小的儿子互换，然后继续操作，直到满足性质。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/14/Combination/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lambsey">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facecode.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lambsey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/14/Combination/" itemprop="url">数论学习笔记-组合数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T13:15:40+08:00">2018-04-14</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数论/" itemprop="url" rel="index"><span itemprop="name">数论</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天学习了技术问题(参见数学选修2-3)</p>
+<h1 id="排列数"><a href="#排列数" class="headerlink" title="排列数"></a>排列数</h1><p>有这样一个问题：</p>
+<blockquote>
+<p>你认识$n$个妹子，每个妹子都不一样(当然了)，现在令这$n$个妹子排好队，共有多少种方法</p>
+</blockquote>
+<p>对于第一个位置，我们有$n$种选择，第二个位置有$n-1$种选择，依此类推，到第$n$个位置我们就只有一种方法了，根据分步乘法原理，我们能得到<br>$A_n^{n} = n \cdot (n-1)\cdot(n-2)…1 = n!$<br>这还叫做$n$的全排列，如果只需其中的$m$个人的排列，那么就有<br>$A_n^{m} = n\cdot(n-1)\cdot(n-2)…(n-m+1) = \frac{n!}{(n-m)!}$</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/14/Combination/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/11/数论学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -318,7 +616,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/11/数论学习笔记/" itemprop="url">数论学习笔记</a></h1>
+                <a class="post-title-link" href="/2018/04/11/数论学习笔记/" itemprop="url">数论学习笔记-费马小定理</a></h1>
         
 
         <div class="post-meta">
@@ -767,7 +1065,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/25/关于素数/" itemprop="url">数论学习笔记</a></h1>
+                <a class="post-title-link" href="/2018/03/25/关于素数/" itemprop="url">数论学习笔记-素数</a></h1>
         
 
         <div class="post-meta">
@@ -927,7 +1225,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -956,8 +1254,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -1185,6 +1481,10 @@
     
       
         
+      
+    
+      
+    
       
     
       

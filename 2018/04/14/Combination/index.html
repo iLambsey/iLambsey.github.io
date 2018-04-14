@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="luogu P1865  Problem一行两个整数，询问次数n和最大范围m，接下来n行每行两个整数l，r为询问区间的左右端点，输出区间中素数的个数，如果超出最大范围m和0输出Crossing the line">
+  <meta name="description" content="今天学习了技术问题(参见数学选修2-3) 排列数有这样一个问题：  你认识$n$个妹子，每个妹子都不一样(当然了)，现在令这$n$个妹子排好队，共有多少种方法  对于第一个位置，我们有$n$种选择，第二个位置有$n-1$种选择，依此类推，到第$n$个位置我们就只有一种方法了，根据分步乘法原理，我们能得到$A_n^{n} = n \cdot (n-1)\cdot(n-2)…1 = n!$这还叫做$n">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A % B Problem">
-<meta property="og:url" content="https://lambsey.oi/2018/04/02/Problem/index.html">
+<meta property="og:title" content="数论学习笔记-组合数">
+<meta property="og:url" content="https://lambsey.oi/2018/04/14/Combination/index.html">
 <meta property="og:site_name" content="Lambsey&#39;s Blog">
-<meta property="og:description" content="luogu P1865  Problem一行两个整数，询问次数n和最大范围m，接下来n行每行两个整数l，r为询问区间的左右端点，输出区间中素数的个数，如果超出最大范围m和0输出Crossing the line">
+<meta property="og:description" content="今天学习了技术问题(参见数学选修2-3) 排列数有这样一个问题：  你认识$n$个妹子，每个妹子都不一样(当然了)，现在令这$n$个妹子排好队，共有多少种方法  对于第一个位置，我们有$n$种选择，第二个位置有$n-1$种选择，依此类推，到第$n$个位置我们就只有一种方法了，根据分步乘法原理，我们能得到$A_n^{n} = n \cdot (n-1)\cdot(n-2)…1 = n!$这还叫做$n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-02T15:33:09.170Z">
+<meta property="og:updated_time" content="2018-04-14T15:59:01.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A % B Problem">
-<meta name="twitter:description" content="luogu P1865  Problem一行两个整数，询问次数n和最大范围m，接下来n行每行两个整数l，r为询问区间的左右端点，输出区间中素数的个数，如果超出最大范围m和0输出Crossing the line">
+<meta name="twitter:title" content="数论学习笔记-组合数">
+<meta name="twitter:description" content="今天学习了技术问题(参见数学选修2-3) 排列数有这样一个问题：  你认识$n$个妹子，每个妹子都不一样(当然了)，现在令这$n$个妹子排好队，共有多少种方法  对于第一个位置，我们有$n$种选择，第二个位置有$n-1$种选择，依此类推，到第$n$个位置我们就只有一种方法了，根据分步乘法原理，我们能得到$A_n^{n} = n \cdot (n-1)\cdot(n-2)…1 = n!$这还叫做$n">
 
 
 
 
 
 
-  <link rel="canonical" href="https://lambsey.oi/2018/04/02/Problem/"/>
+  <link rel="canonical" href="https://lambsey.oi/2018/04/14/Combination/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>A % B Problem | Lambsey's Blog</title>
+  <title>数论学习笔记-组合数 | Lambsey's Blog</title>
   
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/02/Problem/">
+    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/14/Combination/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lambsey">
@@ -320,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">A % B Problem</h1>
+          <h1 class="post-title" itemprop="name headline">数论学习笔记-组合数</h1>
         
 
         <div class="post-meta">
@@ -332,7 +332,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T23:19:21+08:00">2018-04-02</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T13:15:40+08:00">2018-04-14</time>
             
 
             
@@ -387,12 +387,57 @@
       
 
       
-        <p>luogu P1865 </p>
-<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>一行两个整数，询问次数n和最大范围m，接下来n行每行两个整数l，r为询问区间的左右端点，输出区间中素数的个数，如果超出最大范围m和0输出Crossing the line </p>
+        <p>今天学习了技术问题(参见数学选修2-3)</p>
+<h1 id="排列数"><a href="#排列数" class="headerlink" title="排列数"></a>排列数</h1><p>有这样一个问题：</p>
+<blockquote>
+<p>你认识$n$个妹子，每个妹子都不一样(当然了)，现在令这$n$个妹子排好队，共有多少种方法</p>
+</blockquote>
+<p>对于第一个位置，我们有$n$种选择，第二个位置有$n-1$种选择，依此类推，到第$n$个位置我们就只有一种方法了，根据分步乘法原理，我们能得到<br>$A_n^{n} = n \cdot (n-1)\cdot(n-2)…1 = n!$<br>这还叫做$n$的全排列，如果只需其中的$m$个人的排列，那么就有<br>$A_n^{m} = n\cdot(n-1)\cdot(n-2)…(n-m+1) = \frac{n!}{(n-m)!}$</p>
 <a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>直接欧拉筛筛一筛素数，然后预先处理出一个数组ans[i]储存到第i个数为止素数的个数，对于每个询问只需要用ans[r] - ans[i]就行了，不过还要特判一下左端点是不是素数，因为左端点如果是素数的话在做差时会把他减掉QAQ，所以还要再+1。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1000000</span> + <span class="number">50</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> isnotp[MAXN] ;</span><br><span class="line"><span class="keyword">int</span> p[MAXN] ;</span><br><span class="line"><span class="keyword">int</span> ans[MAXN] ;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> N, M ;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;N, &amp;M) ;</span><br><span class="line">	isnotp[<span class="number">1</span>] = <span class="literal">true</span> ;</span><br><span class="line">	<span class="keyword">int</span> cur = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= M ; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!isnotp[i]) p[++cur] = i , ans[i] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cur &amp;&amp; i * p[j] &lt;= M ; j ++) &#123;</span><br><span class="line">			isnotp[ i * p[j] ] = <span class="literal">true</span> ;</span><br><span class="line">			<span class="keyword">if</span> (i % p[j] == <span class="number">0</span>) <span class="keyword">break</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= M; i++) ans[i] += ans[i - <span class="number">1</span>] ;</span><br><span class="line">	<span class="keyword">int</span> l , r ;</span><br><span class="line">	<span class="keyword">while</span> (N -- ) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;l, &amp;r) ;</span><br><span class="line">		<span class="keyword">if</span> (r &gt; M || l &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"Crossing the line\n"</span>) ;</span><br><span class="line">			<span class="keyword">continue</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> d = <span class="number">0</span> ;</span><br><span class="line">		<span class="keyword">if</span> (!isnotp[l])  d ++ ;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, d + ans[r] - ans [l]) ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h1><p>还有一个问题</p>
+<blockquote>
+<p>你认识$n$个妹子，现在你想从这$n$个妹子中选出$m$个妹子和你一起参加NOIP，共有多少种方法</p>
+</blockquote>
+<p>我们可以先让妹子们都排好队，那就是$A_n^m$，但是我们并不想让妹子们都按顺序排好，所以我们的答案中应该多出了$m$个妹子排序的方案书，那就是$A_m^m$，由此，我们有得出了组合数的公式<br>$C_n^m = \frac{A_n^m}{A_m^m} = \frac{n!}{m!\cdot(n-m)!}$<br>对于组合数我们还有下列公式<br>$C_n^m=C_{n-1}^m+C_{n-1}^{m-1}$<br>$C_n^m=C_n^{n-m}$</p>
+<h1 id="杨辉三角-Pascal三角形"><a href="#杨辉三角-Pascal三角形" class="headerlink" title="杨辉三角(Pascal三角形)"></a>杨辉三角(Pascal三角形)</h1><p>我们观察一下这个三角。。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">       <span class="number">1</span></span><br><span class="line">      <span class="number">1</span> <span class="number">1</span></span><br><span class="line">     <span class="number">1</span> <span class="number">2</span> <span class="number">1</span></span><br><span class="line">    <span class="number">1</span> <span class="number">3</span> <span class="number">3</span> <span class="number">1</span></span><br><span class="line">   <span class="number">1</span> <span class="number">4</span> <span class="number">6</span> <span class="number">4</span> <span class="number">1</span></span><br><span class="line"> <span class="number">1</span> <span class="number">5</span> <span class="number">10</span> <span class="number">10</span> <span class="number">5</span> <span class="number">1</span></span><br><span class="line"><span class="number">1</span> <span class="number">6</span> <span class="number">15</span> <span class="number">20</span> <span class="number">15</span> <span class="number">6</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>会第二行起发现每个数都等于两肩上数之和，这个关系还体现了组合数的递推公式$C_n^m=C_{n-1}^m+C_{n-1}^{m-1}$，若把第一层看作$n=1$，那么下面的每一层都对应了$C_n^0\;C_n^1\;C_n^2…C_n^n$</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>我们令C[n][m]表示组合数<br>根据递推公式<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int C[<span class="string">N</span>][<span class="symbol">M</span>];</span><br><span class="line">C[<span class="string">1</span>][<span class="symbol">1</span>] = 1;</span><br><span class="line">for (int i = 1; i <span class="xml"><span class="tag">&lt;<span class="name">=</span> <span class="attr">2333</span>; <span class="attr">i</span>++) <span class="attr">C</span>[<span class="attr">i</span>][<span class="attr">0</span>] = <span class="string">C[i][i]</span> = <span class="string">1;//预处理</span></span></span></span><br><span class="line"><span class="xml">for (int i = 2; i <span class="tag">&lt;<span class="name">=</span> <span class="attr">2333</span>; <span class="attr">i</span>++)</span></span></span><br><span class="line"><span class="xml">	for (int j = 1; j <span class="tag">&lt;<span class="name">=</span> <span class="attr">i</span>; <span class="attr">j</span>++)</span></span></span><br><span class="line"><span class="xml">		C[i][j] = C[i - 1][j - 1] + C[i - 1][j];//递推</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="一道例题"><a href="#一道例题" class="headerlink" title="一道例题"></a>一道例题</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>(NOIP 2016)给定$n,m$和$k$，对于所有的$0 \leq i \leq n$，$0 \leq j \leq min(i,m)$有多少对$i,j$满足$C_i^j$是$k$的倍数。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>杨辉三角递推，可以在计算时就$mod\;k$，最后预处理答案，这里需要用到矩阵和，比如ans[i][j]，从上到下递推，应该有<br><code>ans[i][j] = ans[i - 1][j] + ans[i][j - 1] - ans[i - 1][j - 1];</code><br>手玩一下会发现，这里的ans[i - 1][j - 1]被加了两次，因此要减去一个，同时不要忘了在询问时取$min(j,m)$。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre><code>#include &lt;cstdio&gt;
+#include &lt;iostream&gt;
+using namespace std;
 
+int N, M, K, T;
+int C[2001][2001];
+int ans[2001][2001];
+void make() {
+    F[1][1] = 1;
+    for (int i = 0; i &lt;= 2000; i++) C[i][0] = 1; 
+    for (int i = 2; i &lt;= 2000; i++)
+        for (int j = 1; j &lt;= i; j++) {
+            C[i][j] = (C[i - 1][j] + C[i - 1][j - 1]) % K;
+        }
+    for (int i = 2; i &lt;= 2000; i++) {
+        for (int j = 1; j &lt;= i; j++) {
+            ans[i][j] = ans[i - 1][j] + ans[i][j - 1] - ans[i - 1][j - 1];
+            if (C[i][j] == 0) ans[i][j] += 1;
+        }
+        ans[i][i + 1] = ans[i][i];
+    }
+}
+
+int main() {
+    cin &gt;&gt; T &gt;&gt; K;
+    make();
+    while (T --) {
+        cin &gt;&gt; N &gt;&gt; M;
+        M = min(M, N);
+        cout &lt;&lt; ans[N][M] &lt;&lt; endl;
+    }
+    return 0;
+} 
+</code></pre>
       
     </div>
 
@@ -425,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/25/关于素数/" rel="next" title="数论学习笔记-素数">
-                <i class="fa fa-chevron-left"></i> 数论学习笔记-素数
+              <a href="/2018/04/11/数论学习笔记/" rel="next" title="数论学习笔记-费马小定理">
+                <i class="fa fa-chevron-left"></i> 数论学习笔记-费马小定理
               </a>
             
           </div>
@@ -435,8 +480,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/03/FBI/" rel="prev" title="FBI Tree">
-                FBI Tree <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/15/heap/" rel="prev" title="堆">
+                堆 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排列数"><span class="nav-number">1.</span> <span class="nav-text">排列数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合数"><span class="nav-number">2.</span> <span class="nav-text">组合数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杨辉三角-Pascal三角形"><span class="nav-number">3.</span> <span class="nav-text">杨辉三角(Pascal三角形)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">3.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一道例题"><span class="nav-number">4.</span> <span class="nav-text">一道例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">4.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">4.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -789,6 +834,29 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
