@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="因为太弱了，对于数论还是接触的太少，所以要开始学习数论了(吼吼吼)~~~ 费马小定理作为一个数论中很重要的定理，先来看看是什么吧。  假如$a$是一个整数，$p$是一个质数，且$gcd(a,p) = 1$，即$a,p$互质，那么有$a^{p - 1} \equiv 1 (mod p)$  不妨来试一试这东西有什么用吧：  请计算$ 2^{100}\;mod\;13 $  ???直接爆算??? 不，">
+  <meta name="description" content="Description给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N\geq10^{7}$ Solution可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数论学习笔记-费马小定理">
-<meta property="og:url" content="https://lambsey.oi/2018/04/11/数论学习笔记/index.html">
+<meta property="og:title" content="BZOJ GCD">
+<meta property="og:url" content="https://lambsey.oi/2018/04/16/GCD/index.html">
 <meta property="og:site_name" content="Lambsey&#39;s Blog">
-<meta property="og:description" content="因为太弱了，对于数论还是接触的太少，所以要开始学习数论了(吼吼吼)~~~ 费马小定理作为一个数论中很重要的定理，先来看看是什么吧。  假如$a$是一个整数，$p$是一个质数，且$gcd(a,p) = 1$，即$a,p$互质，那么有$a^{p - 1} \equiv 1 (mod p)$  不妨来试一试这东西有什么用吧：  请计算$ 2^{100}\;mod\;13 $  ???直接爆算??? 不，">
+<meta property="og:description" content="Description给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N\geq10^{7}$ Solution可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-14T14:54:30.049Z">
+<meta property="og:updated_time" content="2018-04-17T10:42:50.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数论学习笔记-费马小定理">
-<meta name="twitter:description" content="因为太弱了，对于数论还是接触的太少，所以要开始学习数论了(吼吼吼)~~~ 费马小定理作为一个数论中很重要的定理，先来看看是什么吧。  假如$a$是一个整数，$p$是一个质数，且$gcd(a,p) = 1$，即$a,p$互质，那么有$a^{p - 1} \equiv 1 (mod p)$  不妨来试一试这东西有什么用吧：  请计算$ 2^{100}\;mod\;13 $  ???直接爆算??? 不，">
+<meta name="twitter:title" content="BZOJ GCD">
+<meta name="twitter:description" content="Description给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N\geq10^{7}$ Solution可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$">
 
 
 
 
 
 
-  <link rel="canonical" href="https://lambsey.oi/2018/04/11/数论学习笔记/"/>
+  <link rel="canonical" href="https://lambsey.oi/2018/04/16/GCD/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>数论学习笔记-费马小定理 | Lambsey's Blog</title>
+  <title>BZOJ GCD | Lambsey's Blog</title>
   
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/11/数论学习笔记/">
+    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/16/GCD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lambsey">
@@ -320,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数论学习笔记-费马小定理</h1>
+          <h1 class="post-title" itemprop="name headline">BZOJ GCD</h1>
         
 
         <div class="post-meta">
@@ -332,7 +332,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T00:26:36+08:00">2018-04-11</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T23:26:10+08:00">2018-04-16</time>
             
 
             
@@ -387,21 +387,9 @@
       
 
       
-        <p>因为太弱了，对于数论还是接触的太少，所以要开始学习数论了(吼吼吼)~~~</p>
-<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>作为一个数论中很重要的定理，先来看看是什么吧。</p>
-<blockquote>
-<p>假如$a$是一个整数，$p$是一个质数，且$gcd(a,p) = 1$，即$a,p$互质，那么有$a^{p - 1} \equiv 1 (mod p)$</p>
-</blockquote>
-<p>不妨来试一试这东西有什么用吧：</p>
-<blockquote>
-<p>请计算$ 2^{100}\;mod\;13 $</p>
-</blockquote>
-<p>???直接爆算??? 不，我们刚刚学习了费马小定理，不难发现这里的<br>$\equiv 2^{12 \times 8 + 4} mod 13 $<br>    $ \equiv (2^{12})2^8 \times 2^4 (mod\;13) $<br>    $ \equiv 1^8 \times 16 (mod\;13) $<br>    $ \equiv 16 (mod\;13) $<br>    $ \equiv 3 $<br><a id="more"></a><br>这还不是费马小定理真正的用处，它一个很重要的应用就是乘法逆元。<br>已知$ a^{p - 1} \equiv 1 $ ，可得$ a \cdot a^{p - 2} \equiv 1 $<br>由此我们称$a$和$a^{p-2}$在$mod\;p$意义下互为乘法逆元。<br>有什么用？如果我们要算$a/b\;mod\; p$，但是我们发现除法并没有模运算的公式，而对于加减乘运算，所以不得不学习一下取模运算了。orz</p>
-<h3 id="取模运算"><a href="#取模运算" class="headerlink" title="取模运算"></a>取模运算</h3><p>对于取模运算，有下列运算法则。<br>$(a + b)\;mod\;p = (a\;mod\;p + b\;mod\;p)\;mod\;p$<br>$(a - b)\;mod\;p = (a\;mod\;p - b\;mod\;p)\;mod\;p$<br>$(a \cdot b)\;mod\;p = (a\;mod\;p \cdot b\;mod\;p)\;mod\;p$<br>$a ^ b \;mod\; p = ((a \;mod\; p)^b) \;mod\; p $<br>？？？为什么没有除法呢？？？<br>我们来探究一下。<br>比如我们要计算$(a\;/ \;b\;)mod\;p$，这里要注意，能用逆元进行运算的前提的$gcd(b, p) = 1$，我们知道除以一个数等于乘上它的倒数，由费马小定理可得$b\cdot b^{p - 2} \equiv 1$，所以只需计算$(a \; \cdot \; b^{p - 2}) \; mod \; p$，要求$b^{p - 2}$，快速幂解决。</p>
-<h3 id="一道例题"><a href="#一道例题" class="headerlink" title="一道例题"></a>一道例题</h3><h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>在$n$维空间中，一个单位立方体由 $2n$ 个点组成。 他们的坐标形如 $(x_1,x_2,…,x_n),x_i ∈{0,1}$。 定义 $n$ 维空间中两点的距离为其曼哈顿距离，点 $p(p_1,p_2,…,p_n)$与点$q (q_1,q_2,…,q_n)$的距离为$\sum_{i=1}^N|p_i −q_i|$。现在给你单位立方体上一点 $p$ 以及一个整数$k$，问你与点$p$距离为 $k$ 的单位立方体上点的数量。 因为这样的点可能很多，所以请对$10^{9} + 7$取模</p>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>由于是对对应坐标的差求和，先取一个点，不妨是$(0,0,0,…,0)$，与他距离为$k$的点的坐标不难发现就是把$0$换成$k$个$1$，所以只需要求这$n$个0中有$k$个位置为$1$的点有多少，那就是$C_{n}^k$，由于要取模，所以就要用到费马小定理求一下$(n-k)!$的逆元了。<br>题目来自THU_ZRT，qbxt刷题班的一道题。<br>算法：费马小定理+快速幂</p>
-<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="function">LL <span class="title">pow</span><span class="params">(LL x, LL y)</span> </span>&#123;<span class="comment">//快速幂</span></span><br><span class="line">	LL sum = <span class="number">1</span>;</span><br><span class="line">	LL a = x;</span><br><span class="line">	<span class="keyword">while</span> (y) &#123;</span><br><span class="line">		<span class="keyword">if</span> (y&amp;<span class="number">1</span>) &#123;</span><br><span class="line">		sum = (sum*a) % MOD;</span><br><span class="line">	&#125;</span><br><span class="line">		a = (a*a)%MOD;</span><br><span class="line">		y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (sum)%MOD;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">C</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;<span class="comment">//求组合数</span></span><br><span class="line">	LL x = <span class="number">1</span>,y = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = m+<span class="number">1</span>; i &lt;= n; i++) x = (x*i) % MOD;</span><br><span class="line">	LL o = n - m;<span class="comment">//约分</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= o; i++) y = (y*i) % MOD;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>, (x*<span class="built_in">pow</span>(y, MOD - <span class="number">2</span>) % MOD));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;	</span><br><span class="line">	<span class="keyword">int</span> n,k;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">	<span class="comment">//for (int i = 1; i &lt;= n; i++) scanf("%d", &amp;num[i]); //读入后面的这几行没有用</span></span><br><span class="line">	C(n,k);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.<br>$N\geq10^{7}$</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$b$互质,所以对于每一个整数$a=\frac{N}{p}$,所有小于它的数的$k$的$\phi(k)$都成立,又因为&amp;x,y&amp;可以互换位置,所以答案就是$\sum_{i=1}^{\frac{N}{p}}\phi(i) \cdot 2 - 1$,这里的减$1$是因为$a=1,b=1$被多算了一次。<br>还要注意数组的大小,素数表开一半就行了,用int,其余用long long<br>预处理欧拉函数要用线性筛法,不然会TLE</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e7</span> + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> p[<span class="number">1000000</span> + <span class="number">1</span>];</span><br><span class="line">LL cur, N;</span><br><span class="line">LL phi[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getlist</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) <span class="keyword">if</span>(!phi[i]) &#123;</span><br><span class="line">		p[++cur] = i;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= N; j+=i) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!phi[j]) phi[j] = j;</span><br><span class="line">			phi[j] = phi[j]/i * (i - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	LL ans = <span class="number">0</span>;</span><br><span class="line">	getlist();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) phi[i] = phi[i - <span class="number">1</span>] + phi[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur; i ++) &#123;</span><br><span class="line">		ans += (phi[N/p[i]] &lt;&lt; <span class="number">1</span>) - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -434,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/03/FBI/" rel="next" title="FBI Tree">
-                <i class="fa fa-chevron-left"></i> FBI Tree
+              <a href="/2018/04/15/数论学习笔记-欧拉函数/" rel="next" title="数论学习笔记-欧拉函数">
+                <i class="fa fa-chevron-left"></i> 数论学习笔记-欧拉函数
               </a>
             
           </div>
@@ -443,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/14/Combination/" rel="prev" title="数论学习笔记-组合数">
-                数论学习笔记-组合数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#费马小定理"><span class="nav-number">1.</span> <span class="nav-text">费马小定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取模运算"><span class="nav-number">1.1.</span> <span class="nav-text">取模运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一道例题"><span class="nav-number">1.2.</span> <span class="nav-text">一道例题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem"><span class="nav-number">1.2.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code"><span class="nav-number">1.2.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>

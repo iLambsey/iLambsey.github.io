@@ -99,18 +99,18 @@
 
 
 
-  <meta name="description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$  证">
-<meta name="keywords" content="数论">
+  <meta name="description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$延伸公">
+<meta name="keywords" content="数论,欧拉函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数论学习笔记-欧拉函数">
 <meta property="og:url" content="https://lambsey.oi/2018/04/15/数论学习笔记-欧拉函数/index.html">
 <meta property="og:site_name" content="Lambsey&#39;s Blog">
-<meta property="og:description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$  证">
+<meta property="og:description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$延伸公">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-15T16:06:39.464Z">
+<meta property="og:updated_time" content="2018-04-17T10:41:35.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数论学习笔记-欧拉函数">
-<meta name="twitter:description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$  证">
+<meta name="twitter:description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$延伸公">
 
 
 
@@ -389,10 +389,15 @@
       
         <p>今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。</p>
 <h1 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h1><blockquote>
-<p>定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$</p>
+<p>定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$<br>延伸公式:$\sum_{p_{i}}^k = \frac{\phi(n)\cdot n }{2}$，其中$p_i$为$n$的质因子</p>
 </blockquote>
-<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>我们知道任何一个正整数$n(n &gt; 1)$，都能写成$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$的形式，即<strong>唯一分解式</strong>。既然要求的是从$1$到$n$与$n$互质的个数，那么从这$n$个数中减去和$n$不互质的数的个数，就得到了$\phi(n)$，特别的，当我们的$n$如果是一个素数的话，从$1$到$n-1$所有的数都和$n$互质，即$\phi(n)=n-1$，在$n$为素数时成立。<br>当我们的$k=1$时，若$n=p^k$，我们还知道$p$是一个质数，那么只需要将$p$和$p$所有的倍数都减去就可以了，我们可以推出$1 \cdot p $，$2 \cdot p $，$ 3 \cdot p … p^{p-1} \cdot p$，可以得到与$p$不互质的数的个数为$p^{p-1}$个，所以$\phi(n)=\phi(p^k)=p^k - p^{p-1}$。$,$<br>当$n\neq 1$时：<br>$\phi(n) $<br>$= \phi(p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k})$<br>$= \prod_{i=1}^k(p_i^{a_i} - p_i^{a_i-1}) $<br>$= \prod_{i=1}^k p_i^{a_i} \cdot (1 - \frac{1}{p_i}) $<br>$= n \cdot \prod_{i=1}^k (1-\frac{1}{p_i})$</p>
-
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>我们知道任何一个正整数$n(n &gt; 1)$，都能写成$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$的形式，即<strong>唯一分解式</strong>。既然要求的是从$1$到$n$与$n$互质的个数，那么从这$n$个数中减去和$n$不互质的数的个数，就得到了$\phi(n)$，特别的，当我们的$n$如果是一个素数的话，从$1$到$n-1$所有的数都和$n$互质，即$\phi(n)=n-1$，在$n$为素数时成立。<br>当我们的$k=1$时，若$n=p^k$，我们还知道$p$是一个质数，那么只需要将$p$和$p$所有的倍数都减去就可以了，我们可以推出$1 \cdot p $，$2 \cdot p $，$ 3 \cdot p … p^{k-1} \cdot p$，可以得到与$p^k$不互质的数的个数为$p^{k-1}$个，所以$\phi(n)=\phi(p^k)=p^k - p^{k-1}$。$,$<br>当$n\neq 1$时：<br>$\phi(n) $<br>$= \phi(p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k})$<br>$= \prod_{i=1}^k(p_i^{a_i} - p_i^{a_i-1}) $<br>$= \prod_{i=1}^k p_i^{a_i} \cdot (1 - \frac{1}{p_i}) $<br>$= n \cdot \prod_{i=1}^k (1-\frac{1}{p_i})$<br>这里用到了一个定理:</p>
+<blockquote>
+<p>当$gcd(n,m)=1$时$\phi(nm)=\phi(n)\cdot\phi(m)=m \cdot n-n-m$</p>
+</blockquote>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>要求$\phi(n)$，就要找到所有的质因子，第一个方法时从$[1,\sqrt n]$枚举质因子，这里用到了试出法。<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> Eulre_phi(<span class="built_in">int</span> <span class="built_in">n</span>) &#123;</span><br><span class="line">	<span class="built_in">int</span> m = (<span class="built_in">int</span>) <span class="built_in">sqrt</span>(<span class="built_in">n</span>+<span class="number">0.5</span>);</span><br><span class="line">	<span class="built_in">int</span> ans = <span class="built_in">n</span>;</span><br><span class="line">	for (<span class="built_in">int</span> i = <span class="number">2</span>; i &lt;= m; i++) <span class="built_in">if</span> (<span class="built_in">n</span> % i == <span class="number">0</span>) &#123;</span><br><span class="line">		ans = ans/i * (i - <span class="number">1</span>);</span><br><span class="line">		while(<span class="built_in">n</span> % i == <span class="number">0</span>) <span class="built_in">n</span> /= i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">if</span>(<span class="built_in">n</span> &gt; <span class="number">1</span>) ans = ans/<span class="built_in">n</span> * (<span class="built_in">n</span> - <span class="number">1</span>);</span><br><span class="line">	//因为在开平方时可能会丢失最大的质因子，所以要特判，比如<span class="number">77</span></span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果需要$[1,\sqrt n]$所有数，还可以这样操作，顺便再存个质数表</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> Eulre_phi()&#123;</span><br><span class="line">	for (<span class="built_in">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">N</span>; i++) <span class="built_in">if</span> (!<span class="built_in">phi</span>[i])&#123;</span><br><span class="line">	 	p[++cur] = i;//存质数表</span><br><span class="line">	 	for (<span class="built_in">int</span> j = i; j &lt;= <span class="built_in">N</span>; j += i) &#123;</span><br><span class="line">	 		<span class="built_in">if</span> (!<span class="built_in">phi</span>[j]) <span class="built_in">phi</span>[j] = j;</span><br><span class="line">	 		<span class="built_in">phi</span>[j] = <span class="built_in">phi</span>[j] / i * (i - <span class="number">1</span>);</span><br><span class="line">	 	&#125;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -414,6 +419,8 @@
           
             <a href="/tags/数论/" rel="tag"># 数论</a>
           
+            <a href="/tags/欧拉函数/" rel="tag"># 欧拉函数</a>
+          
         </div>
       
 
@@ -425,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/15/heap/" rel="next" title="堆">
-                <i class="fa fa-chevron-left"></i> 堆
+              <a href="/2018/04/14/Combination/" rel="next" title="数论学习笔记-组合数">
+                <i class="fa fa-chevron-left"></i> 数论学习笔记-组合数
               </a>
             
           </div>
@@ -434,6 +441,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/16/GCD/" rel="prev" title="BZOJ GCD">
+                BZOJ GCD <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -545,7 +556,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -599,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#欧拉函数"><span class="nav-number">1.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">1.1.</span> <span class="nav-text">证明</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#欧拉函数"><span class="nav-number">1.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">1.1.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
             
 
           </div>
