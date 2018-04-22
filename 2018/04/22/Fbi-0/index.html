@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="斐波那契数列有这样一个问题  有$n$个台阶，你每次只能走一阶或两阶，有多少种走法。">
+<meta name="keywords" content="数论,斐波那契数列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神奇的斐波那契数列">
+<meta property="og:url" content="https://lambsey.oi/2018/04/22/Fbi-0/index.html">
+<meta property="og:site_name" content="Lambsey&#39;s Blog">
+<meta property="og:description" content="斐波那契数列有这样一个问题  有$n$个台阶，你每次只能走一阶或两阶，有多少种走法。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://coding.net/u/Lambsey/p/Picture/git/raw/master/%25E8%258D%2589%25E5%259B%25BE.png">
+<meta property="og:image" content="https://coding.net/u/Lambsey/p/Picture/git/raw/master/5375154a2dd81f73810be5f04f0ab92f_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/8725bc7f599bb88e0bf3343e4cd1c466_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/1c0bf51aa055b413249d680d675d5c28_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/dc8bdf9d021a9fd66529c3e29ea46f1b_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/505000f930c06779e71e0a6075f2a4b9_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/6c4a54fba4c66143abb03c54033a1a52_hd.jpg">
+<meta property="og:image" content="https://coding.net/u/Lambsey/p/Picture/git/raw/master/977bdf99ace9c519b3d9941e9e37a7d7_hd.jpg">
+<meta property="og:image" content="https://coding.net/u/Lambsey/p/Picture/git/raw/master/db5d355d805ba7f96b576ac2a5ed1982_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/a40a8e069606b04c8100d7df236d3bb9_hd.jpg">
+<meta property="og:image" content="https://coding.net/u/Lambsey/p/Picture/git/raw/master/7312cfbc09ead2a2b570f063bd0c2af5_hd.jpg">
+<meta property="og:updated_time" content="2018-04-22T03:39:16.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="神奇的斐波那契数列">
+<meta name="twitter:description" content="斐波那契数列有这样一个问题  有$n$个台阶，你每次只能走一阶或两阶，有多少种走法。">
+<meta name="twitter:image" content="https://coding.net/u/Lambsey/p/Picture/git/raw/master/%25E8%258D%2589%25E5%259B%25BE.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://lambsey.oi/2018/04/22/Fbi-0/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>神奇的斐波那契数列 | Lambsey's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lambsey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">浮生若梦，为欢几何。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/22/Fbi-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lambsey">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facecode.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lambsey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">神奇的斐波那契数列</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T08:41:22+08:00">2018-04-22</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数论/" itemprop="url" rel="index"><span itemprop="name">数论</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h1><p>有这样一个问题</p>
+<blockquote>
+<p>有$n$个台阶，你每次只能走一阶或两阶，有多少种走法。</p>
+</blockquote>
+<a id="more"></a>
+<p>假设$n=5$<br>手玩一下会发现<br><code>5 = 1 + 1 + 1 + 1 + 1</code><br><code>5 = 1 + 1 + 1 + 2</code><br><code>5 = 1 + 2 + 1 + 1</code><br><code>5 = 2 + 1 + 1 + 1</code><br><code>5 = 1 + 1 + 2 + 1</code><br><code>5 = 2 + 1 + 2</code><br><code>5 = 2 + 2 + 1</code><br><code>5 = 1 + 2 + 2</code><br>综上一共八种方法。<br>其中第一步走$1$阶的有$5$种方案，第一步走$2$阶的有$3$种方案，可以把走法进行分类：<br>·第一步走$1$阶，则还有$n-1$阶要走，有$f(n-1)$种方案<br>·第一步走$2$阶，则还有$n-2$阶要走，有$f(n-2)$种方案<br>得到了$f(n)$的递推式：$f(n) = f(n-1) + f(n-2)$<br>边界为$f(0)=1,f(1)=1$</p>
+<p>还有这样的</p>
+<blockquote>
+<p>有一对兔子，每只兔子从第二个月开始每月产雌雄各一的一对新兔子，第$n$个月后有几对兔子。</p>
+</blockquote>
+<p>再次手玩发现</p>
+<p><img src="https://coding.net/u/Lambsey/p/Picture/git/raw/master/%25E8%258D%2589%25E5%259B%25BE.png" alt="avatar"></p>
+<p>每只兔子出生的那一个月还不能繁殖后代，所以第$n$月的兔子总数为$f(n)=f(n-1)+f(n-2)$即上个月能生产后代的兔子数即这个月新出生的兔子数再加上上个月已经存在的兔子</p>
+<blockquote>
+<p>满足F_1 = F_2 = 1,F_n = F_{n - 1} + F_{n-2}的数列叫做斐波那契数列(Fibonacci)</p>
+</blockquote>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>递归操作<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> Fib(<span class="built_in">int</span> <span class="built_in">n</span>)&#123;</span><br><span class="line">	return <span class="built_in">n</span> &gt; <span class="number">2</span> ? Fib(<span class="built_in">n</span> - <span class="number">1</span>) + Fib(<span class="built_in">n</span> - <span class="number">2</span>) <span class="symbol">:</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因为使用了递归，所以会出现重复计算。</p>
+<p>更高效的方法是递推：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int Fib[<span class="number">2333333</span>];</span><br><span class="line">Fib[<span class="number">0</span>] = <span class="number">0</span>,Fib[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">for (int i = <span class="number">2</span>; i &lt;= <span class="number">2333333</span>; i++)</span><br><span class="line">Fib[i] = Fib[i - <span class="number">1</span>] + Fib[i - <span class="number">2</span>];</span><br></pre></td></tr></table></figure></p>
+<p>当然还有更高效的算法，但是我太弱了还不会。</p>
+<h1 id="Fibonacci数列的数学性质"><a href="#Fibonacci数列的数学性质" class="headerlink" title="Fibonacci数列的数学性质"></a>Fibonacci数列的数学性质</h1><h2 id="与黄金分割比的关系"><a href="#与黄金分割比的关系" class="headerlink" title="与黄金分割比的关系"></a>与黄金分割比的关系</h2><p>观察数列的前几项:<br><code>1      1      2      3      5      8      13      21      34      55      89...</code><br>求相邻两项的商得到<br><code>1      0.5      0.67      0.6      0.625      0.61538      0.61904      0.617647      0.618181818      0.61797752808</code><br>取极限后相邻两项的商为黄金分割比，这个性质也可以根据通项公式得到<br>科普通项公式$f(n)=\frac{1}{\sqrt5}[(\frac{1+\sqrt5}{2})^n-(\frac{1-\sqrt5}{2})^n]$</p>
+<h2 id="整除性"><a href="#整除性" class="headerlink" title="整除性"></a>整除性</h2><p>每$3$个连续的斐波那契数有且只有一个被$2$整除，<br>每$4$个连续的斐波那契数有且只有一个被$3$整除，<br>每$5$个连续的斐波那契数有且只有一个被$5$整除，<br>每$6$个连续的斐波那契数有且只有一个被$8$整除，<br>每$7$个连续的斐波那契数有且只有一个被$13$整除，<br>……<br>每$n$个连续的斐波那契数有且只有一个被$f(n)$整除。</p>
+<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p><img src="https://coding.net/u/Lambsey/p/Picture/git/raw/master/5375154a2dd81f73810be5f04f0ab92f_hd.jpg" alt="avatar"></p>
+<p>如图，每条斜线上的数之和构成了Fibonacci数列。<br>可以理解为把杨辉三角依次下降，将同一行的数字加起来<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">2</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">3</span> <span class="number">3</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">4</span> <span class="number">6</span> <span class="number">4</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">5</span> <span class="number">10</span> <span class="number">10</span> <span class="number">5</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">6</span> <span class="number">15</span> <span class="number">20</span> <span class="number">15</span> <span class="number">6</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>下降-&gt;<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>           -----<span class="number">-1</span></span><br><span class="line"><span class="number">1</span>           -----<span class="number">-1</span> </span><br><span class="line"><span class="number">1</span> <span class="number">1</span>         -----<span class="number">-2</span> </span><br><span class="line"><span class="number">1</span> <span class="number">2</span>         -----<span class="number">-3</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">1</span>       -----<span class="number">-5</span>  </span><br><span class="line"><span class="number">1</span> <span class="number">4</span> <span class="number">3</span>       -----<span class="number">-8</span>    </span><br><span class="line"><span class="number">1</span> <span class="number">5</span> <span class="number">6</span> <span class="number">1</span>     -----<span class="number">-13</span>   </span><br><span class="line"><span class="number">1</span> <span class="number">6</span> <span class="number">10</span> <span class="number">4</span>    -----<span class="number">-21</span> </span><br><span class="line">...................</span><br></pre></td></tr></table></figure></p>
+<p>即有$f(n)=C_{n-1}^0+C_{n-2}^1+…+C_{n-m-1}^m$</p>
+<h2 id="欧几里得算法的时间复杂度问题"><a href="#欧几里得算法的时间复杂度问题" class="headerlink" title="欧几里得算法的时间复杂度问题"></a>欧几里得算法的时间复杂度问题</h2><p>求两个数的最大公约数，用辗转相除法<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b ? gcd(b, a%b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最坏情况下，若$a$较小，需计算$n$次，则$a&gt;f(n-1)$<br>虽然不怎么懂，但还是很神奇的样子</p>
+<h2 id="氢原子能级问题"><a href="#氢原子能级问题" class="headerlink" title="氢原子能级问题"></a>氢原子能级问题</h2><p>留给物理竞赛了</p>
+<h2 id="植物生长"><a href="#植物生长" class="headerlink" title="植物生长"></a>植物生长</h2><p>科学家发现，一些植物的花瓣、萼片、果实的数目以及排列的方式上，都有一个神奇的规律，它们都非常符合著名的斐波那契数列。例如：蓟，它们的头部几乎呈球状。在下图中，你可以看到两条不同方向的螺旋。我们可以数一下，顺时针旋转的（和左边那条旋转方向相同）螺旋一共有13条，而逆时针旋转的则有21条。此外还有菊花、向日葵、松果、菠萝等都是按这种方式生长的。<br><img src="https://pic1.zhimg.com/80/8725bc7f599bb88e0bf3343e4cd1c466_hd.jpg" alt="avatar"><br><img src="https://pic4.zhimg.com/80/1c0bf51aa055b413249d680d675d5c28_hd.jpg" alt="avatar"><br>还有菠萝、松子等，也都符合这个特点，一般会出现34,55，89和144这几个数字。<br><img src="https://pic4.zhimg.com/80/dc8bdf9d021a9fd66529c3e29ea46f1b_hd.jpg" alt="avatar"><br><img src="https://pic1.zhimg.com/80/505000f930c06779e71e0a6075f2a4b9_hd.jpg" alt="avatar"><br>Fibonacci Tree<br><img src="https://pic4.zhimg.com/80/6c4a54fba4c66143abb03c54033a1a52_hd.jpg" alt="avatar"></p>
+<h2 id="Fibonacci螺旋"><a href="#Fibonacci螺旋" class="headerlink" title="Fibonacci螺旋"></a>Fibonacci螺旋</h2><p>斐波那契螺旋又称黄金螺旋，在自然界中广泛存在。如图是一个边长为斐波那契数列的正方形组成的矩形。<br>$f(1)^2+f(2)^2+…+f(n)^2=f(n)\cdot f(n+1)$<br>贝壳螺旋轮廓线<br><img src="https://coding.net/u/Lambsey/p/Picture/git/raw/master/977bdf99ace9c519b3d9941e9e37a7d7_hd.jpg" alt="avatar"><br><img src="https://coding.net/u/Lambsey/p/Picture/git/raw/master/db5d355d805ba7f96b576ac2a5ed1982_hd.jpg" alt="avatar"><br><img src="https://pic3.zhimg.com/80/a40a8e069606b04c8100d7df236d3bb9_hd.jpg" alt="avatar"><br><img src="https://coding.net/u/Lambsey/p/Picture/git/raw/master/7312cfbc09ead2a2b570f063bd0c2af5_hd.jpg" alt="avatar"></p>
+<p>是不是很神奇，这应该就是数学之美吧</p>
+<blockquote>
+<p>世事洞明皆数学，留心处处是文章。</p>
+</blockquote>
+<h1 id="参考文献及图片来源"><a href="#参考文献及图片来源" class="headerlink" title="参考文献及图片来源"></a>参考文献及图片来源</h1><p><a href="https://www.zhihu.com/question/28062458" target="_blank" rel="noopener">斐波那契数列为什么那么重要，所有关于数学的书几乎都会提到？</a><br><a href="https://wenku.baidu.com/view/9e1a976ca45177232f60a232.html" target="_blank" rel="noopener">斐波那契数列在杨辉三角中的应用</a><br><a href="https://wenku.baidu.com/view/a13c6172168884868762d634.html" target="_blank" rel="noopener">“杨辉三角”中的一些秘密</a><br><a href="">手残党手动制作</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数论/" rel="tag"># 数论</a>
+          
+            <a href="/tags/斐波那契数列/" rel="tag"># 斐波那契数列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/16/GCD/" rel="next" title="BZOJ GCD">
+                <i class="fa fa-chevron-left"></i> BZOJ GCD
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/facecode.png"
+                alt="Lambsey" />
+            
+              <p class="site-author-name" itemprop="name">Lambsey</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ellen7ions.github.io/" title="指针" target="_blank">指针</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">1.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fibonacci数列的数学性质"><span class="nav-number">3.</span> <span class="nav-text">Fibonacci数列的数学性质</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#与黄金分割比的关系"><span class="nav-number">3.1.</span> <span class="nav-text">与黄金分割比的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整除性"><span class="nav-number">3.2.</span> <span class="nav-text">整除性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杨辉三角"><span class="nav-number">3.3.</span> <span class="nav-text">杨辉三角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧几里得算法的时间复杂度问题"><span class="nav-number">3.4.</span> <span class="nav-text">欧几里得算法的时间复杂度问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#氢原子能级问题"><span class="nav-number">3.5.</span> <span class="nav-text">氢原子能级问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#植物生长"><span class="nav-number">3.6.</span> <span class="nav-text">植物生长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fibonacci螺旋"><span class="nav-number">3.7.</span> <span class="nav-text">Fibonacci螺旋</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献及图片来源"><span class="nav-number">4.</span> <span class="nav-text">参考文献及图片来源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-Lambsey"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lambsey</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

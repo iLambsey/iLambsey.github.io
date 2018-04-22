@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Lambsey&#39;s Blog">
 <meta property="og:description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$延伸公">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-17T10:41:35.952Z">
+<meta property="og:updated_time" content="2018-04-22T03:39:47.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数论学习笔记-欧拉函数">
 <meta name="twitter:description" content="今天晚上和lzz一起研究了欧拉函数，因为太弱了，还是写一下笔记吧。 欧拉函数 定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$延伸公">
@@ -391,6 +391,7 @@
 <h1 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h1><blockquote>
 <p>定义$\phi(n)$为$[1,n]$中所有与$n$互质的数的个数，其中$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$为$n$的素因子，那么有$\phi(n)=n\cdot \prod_{i=1}^k(1-\frac{1}{p_i})$<br>延伸公式:$\sum_{p_{i}}^k = \frac{\phi(n)\cdot n }{2}$，其中$p_i$为$n$的质因子</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>我们知道任何一个正整数$n(n &gt; 1)$，都能写成$n=p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k}$，其中$p_i$的形式，即<strong>唯一分解式</strong>。既然要求的是从$1$到$n$与$n$互质的个数，那么从这$n$个数中减去和$n$不互质的数的个数，就得到了$\phi(n)$，特别的，当我们的$n$如果是一个素数的话，从$1$到$n-1$所有的数都和$n$互质，即$\phi(n)=n-1$，在$n$为素数时成立。<br>当我们的$k=1$时，若$n=p^k$，我们还知道$p$是一个质数，那么只需要将$p$和$p$所有的倍数都减去就可以了，我们可以推出$1 \cdot p $，$2 \cdot p $，$ 3 \cdot p … p^{k-1} \cdot p$，可以得到与$p^k$不互质的数的个数为$p^{k-1}$个，所以$\phi(n)=\phi(p^k)=p^k - p^{k-1}$。$,$<br>当$n\neq 1$时：<br>$\phi(n) $<br>$= \phi(p_1^{a_1} \cdot p_2^{a_2} \cdot p_3^{a_3}…p_k^{a_k})$<br>$= \prod_{i=1}^k(p_i^{a_i} - p_i^{a_i-1}) $<br>$= \prod_{i=1}^k p_i^{a_i} \cdot (1 - \frac{1}{p_i}) $<br>$= n \cdot \prod_{i=1}^k (1-\frac{1}{p_i})$<br>这里用到了一个定理:</p>
 <blockquote>
 <p>当$gcd(n,m)=1$时$\phi(nm)=\phi(n)\cdot\phi(m)=m \cdot n-n-m$</p>
@@ -522,7 +523,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -558,7 +559,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

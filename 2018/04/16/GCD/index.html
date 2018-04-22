@@ -99,18 +99,18 @@
 
 
 
-  <meta name="description" content="Description给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N\geq10^{7}$ Solution可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$">
+  <meta name="description" content="Description给定整数N，求$1&amp;lt;= x,y&amp;lt;= N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N&amp;lt;=10^{7}$">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ GCD">
 <meta property="og:url" content="https://lambsey.oi/2018/04/16/GCD/index.html">
 <meta property="og:site_name" content="Lambsey&#39;s Blog">
-<meta property="og:description" content="Description给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N\geq10^{7}$ Solution可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$">
+<meta property="og:description" content="Description给定整数N，求$1&amp;lt;= x,y&amp;lt;= N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N&amp;lt;=10^{7}$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-17T10:42:50.849Z">
+<meta property="og:updated_time" content="2018-04-22T03:40:25.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ GCD">
-<meta name="twitter:description" content="Description给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N\geq10^{7}$ Solution可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$">
+<meta name="twitter:description" content="Description给定整数N，求$1&amp;lt;= x,y&amp;lt;= N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.$N&amp;lt;=10^{7}$">
 
 
 
@@ -387,7 +387,8 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定整数N，求$1\geq x,y\geq N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.<br>$N\geq10^{7}$</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定整数N，求$1&lt;= x,y&lt;= N$且$gcd(x,y)$为素数的数对$(x,y)$有多少对.<br>$N&lt;=10^{7}$</p>
+<a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>可以从小到大枚举素数$p$,若$gcd(x,y)=p$,则令$x=p\cdot a$同时$y=p\cdot b$,因为$gcd(x,y)=1$,所以有$gcd(a,b)=1$,否则$gcd(x,y)\neq p$,得出$a$和$b$互质,所以对于每一个整数$a=\frac{N}{p}$,所有小于它的数的$k$的$\phi(k)$都成立,又因为&amp;x,y&amp;可以互换位置,所以答案就是$\sum_{i=1}^{\frac{N}{p}}\phi(i) \cdot 2 - 1$,这里的减$1$是因为$a=1,b=1$被多算了一次。<br>还要注意数组的大小,素数表开一半就行了,用int,其余用long long<br>预处理欧拉函数要用线性筛法,不然会TLE</p>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e7</span> + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> p[<span class="number">1000000</span> + <span class="number">1</span>];</span><br><span class="line">LL cur, N;</span><br><span class="line">LL phi[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getlist</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) <span class="keyword">if</span>(!phi[i]) &#123;</span><br><span class="line">		p[++cur] = i;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= N; j+=i) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!phi[j]) phi[j] = j;</span><br><span class="line">			phi[j] = phi[j]/i * (i - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	LL ans = <span class="number">0</span>;</span><br><span class="line">	getlist();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) phi[i] = phi[i - <span class="number">1</span>] + phi[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur; i ++) &#123;</span><br><span class="line">		ans += (phi[N/p[i]] &lt;&lt; <span class="number">1</span>) - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -431,6 +432,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/Fbi-0/" rel="prev" title="神奇的斐波那契数列">
+                神奇的斐波那契数列 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -508,7 +513,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -544,7 +549,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
