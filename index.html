@@ -299,6 +299,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/22/Fibonacci/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lambsey">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/facecode.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lambsey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/22/Fibonacci/" itemprop="url">矩阵快速幂计算Fibonacci数列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T20:11:57+08:00">2018-04-22</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数论/" itemprop="url" rel="index"><span itemprop="name">数论</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数论/斐波那契数列/" itemprop="url" rel="index"><span itemprop="name">斐波那契数列</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数论/斐波那契数列/快速幂/" itemprop="url" rel="index"><span itemprop="name">快速幂</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>之前学习了Fibonacci数列的递推和递归解法，今天学习一下更高效的解法。</p>
+<blockquote>
+<p>求Fibonacci数列的第$n$项，$n$在long long 范围内，答案对$10^9+7$取模.<br><a href="https://www.luogu.org/problemnew/show/P1962" target="_blank" rel="noopener">斐波那契数列</a><br>面对如此大的数据范围，递归和递推于是都不能用了。</p>
+</blockquote>
+<h2 id="引入矩阵"><a href="#引入矩阵" class="headerlink" title="引入矩阵"></a>引入矩阵</h2><p>Fibonacci数列有如下性质：<br><img src="https://coding.net/u/Lambsey/p/Picture/git/raw/master/origin.png" alt="avatar"><br>如果会矩阵运算的话，这个式子显然是正确的，通过多次迭代。<br><img src="https://coding.net/u/Lambsey/p/Picture/git/raw/master/transfer.png" alt="avatar"><br>于是我们可以通过计算矩阵的幂次来求解，这也算是一个通项公式。<br>对于快速幂：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fffpow</span>(<span class="params"><span class="keyword">int</span> x</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> <span class="keyword">base</span> = x;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		<span class="keyword">if</span> (x &amp; <span class="number">1</span>) &#123;</span><br><span class="line">			ans *= <span class="keyword">base</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">base</span> *= <span class="keyword">base</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果是矩阵的话，将其保存在二维数组里，只要把$ans$换成单位矩阵，$base$设为快速幂的底数，再通过矩阵乘法计算。</p>
+<h2 id="矩阵乘法与快速幂"><a href="#矩阵乘法与快速幂" class="headerlink" title="矩阵乘法与快速幂"></a>矩阵乘法与快速幂</h2><blockquote>
+<p>矩阵乘法：两个$n\times n$的矩阵$A,B$，若$C=AB$，$C[i][j] = \sum_{k = 1}^n A[i][k] \times B[k][j]$,即等于矩阵$a$的第$i$行与矩阵$b$的第$i$列对应乘积的和</p>
+</blockquote>
+<p>关于矩阵和线性代数，想了解更多的可以看看<a href="https://www.bilibili.com/video/av6731067" target="_blank" rel="noopener">B站的3Blue1Brown</a>,里面对于矩阵的原理讲解的很好，也可以配合高中数学选修$4-2$食用。    </p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span>&#123;</span></span><br><span class="line">	LL m[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++)</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; m[i][j] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;	</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125; base, ans;</span><br><span class="line"></span><br><span class="line"><span class="function">Matrix <span class="title">times</span><span class="params">(Matrix a, Matrix b)</span> </span>&#123;</span><br><span class="line">	Matrix ans;</span><br><span class="line">	ans.m[<span class="number">0</span>][<span class="number">1</span>] = ans.m[<span class="number">0</span>][<span class="number">0</span>] = ans.m[<span class="number">1</span>][<span class="number">0</span>] = ans.m[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">2</span>; k++)</span><br><span class="line">				ans.m[i][j] = (ans.m[i][j] + a.m[i][k]*b.m[k][j])%MOD;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Matrixpow</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">	base.m[<span class="number">0</span>][<span class="number">0</span>] = base.m[<span class="number">1</span>][<span class="number">0</span>] = base.m[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	base.m[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	ans.m[<span class="number">0</span>][<span class="number">0</span>] = ans.m[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	ans.m[<span class="number">0</span>][<span class="number">1</span>] = ans.m[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		<span class="keyword">if</span> (x&amp;<span class="number">1</span>)&#123;</span><br><span class="line">			ans = times(ans, base);</span><br><span class="line">		&#125; </span><br><span class="line">		x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">		base = times(base, base);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">LL N;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span> (T--)&#123;</span><br><span class="line">		<span class="keyword">int</span> N;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans.m[<span class="number">0</span>][<span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再放一个模板，$N$阶矩阵的快速幂<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span>&#123;</span></span><br><span class="line">	LL m[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line">&#125; base, ans;</span><br><span class="line">LL N, K;</span><br><span class="line"></span><br><span class="line"><span class="function">Matrix <span class="title">times</span><span class="params">(Matrix a, Matrix b)</span> </span>&#123;</span><br><span class="line">	Matrix tmp;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++)</span><br><span class="line">			tmp.m[i][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N; k++)</span><br><span class="line">				tmp.m[i][j] = (tmp.m[i][j] + a.m[i][k] * b.m[k][j])%MOD;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Matrixpow</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++) </span><br><span class="line">			ans.m[i][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) ans.m[i][i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (x) &#123;</span><br><span class="line">		<span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;</span><br><span class="line">			ans = times(ans, base);</span><br><span class="line">		&#125;</span><br><span class="line">		x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">		base = times(base, base);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; K;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++)</span><br><span class="line">		 <span class="built_in">cin</span> &gt;&gt; base.m[i][j];</span><br><span class="line">	Matrixpow(K);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans.m[i][j] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="根据递推公式构造矩阵快速幂"><a href="#根据递推公式构造矩阵快速幂" class="headerlink" title="根据递推公式构造矩阵快速幂"></a>根据递推公式构造矩阵快速幂</h2><p>这是我目前见到的矩阵唯一的用途，但是还没学会QAQ</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lambsey.oi/2018/04/22/Fbi-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1522,7 +1690,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1539,7 +1707,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -1560,7 +1732,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1800,6 +1976,8 @@
     
       
         
+      
+    
       
     
       
